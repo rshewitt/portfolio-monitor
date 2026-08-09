@@ -1,0 +1,22 @@
+flowchart LR
+    User[User]
+
+    subgraph AWS[AWS Account]
+        Scheduler[EventBridge Scheduler]
+        Lambda[Portfolio Monitor Lambda<br/>TypeScript]
+        Secrets[Secrets Manager<br/>Schwab client credentials]
+        Tokens[(DynamoDB<br/>OAuth tokens and state)]
+        Logs[CloudWatch<br/>Logs and alarms]
+        Notifications[SNS<br/>Email or SMS alerts]
+    end
+
+    Schwab[Schwab Trader API]
+
+    User -->|Initial OAuth authorization| Schwab
+    Scheduler -->|Run periodically| Lambda
+    Lambda -->|Read client credentials| Secrets
+    Lambda -->|Read and update tokens| Tokens
+    Lambda -->|Refresh token and request positions| Schwab
+    Lambda -->|Write logs and metrics| Logs
+    Lambda -->|Threshold crossed| Notifications
+    Notifications --> User

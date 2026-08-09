@@ -1,0 +1,58 @@
+{
+  "name": "portfolio-monitor",
+  "version": "1.0.0",
+  "description": "application for monitoring my stock portfolio",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "diagram:architecture": "mmdc --input docs/diagrams/architecture.mmd --output docs/diagrams/architecture.svg",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "validate": "npm run typecheck && npm run lint && npm test",
+    "build": "sam build",
+    "build:local": "samlocal build",
+    "deploy": "sam deploy",
+    "deploy:local": "samlocal deploy",
+    "typescript:build": "tsc --project tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rshewitt/portfolio-monitor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/rshewitt/portfolio-monitor/issues"
+  },
+  "homepage": "https://github.com/rshewitt/portfolio-monitor#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@mermaid-js/mermaid-cli": "^11.16.0",
+    "@types/aws-lambda": "^8.10.162",
+    "@types/node": "^26.1.2",
+    "esbuild": "^0.28.1",
+    "eslint": "^10.8.0",
+    "prettier": "^3.9.6",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.65.0",
+    "vitest": "^4.1.10"
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.1101.0",
+    "@aws-sdk/client-sns": "^3.1101.0",
+    "@aws-sdk/client-ssm": "^3.1102.0",
+    "@aws-sdk/lib-dynamodb": "^3.1101.0",
+    "aws-lambda": "^1.0.7",
+    "zod": "^4.4.3"
+  }
+}

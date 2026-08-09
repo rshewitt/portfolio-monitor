@@ -1,0 +1,13 @@
+version = 0.1
+
+[default.deploy.parameters]
+stack_name = "portfolio-monitor-alert-app"
+resolve_s3 = true
+s3_prefix = "portfolio-monitor-alert-app"
+confirm_changeset = true
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "AlertEmail=\"sam.hew.r@gmail.com\" DrawdownThresholds=\"5,10,15,20\" GainFloorPercent=\"15\" RecoveryBufferPercent=\"1\" MonitorSchedule=\"cron(0/30 7-14 ? * MON-FRI *)\" ScheduleTimezone=\"America/Denver\""
+image_repositories = []
+
+[default.global.parameters]
+region = "us-west-1"

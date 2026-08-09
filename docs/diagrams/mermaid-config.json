@@ -1,0 +1,11 @@
+{
+  "flowchart": {
+    "defaultRenderer": "elk",
+    "nodeSpacing": 80,
+    "rankSpacing": 100
+  },
+  "elk": {
+    "mergeEdges": false,
+    "nodePlacementStrategy": "NETWORK_SIMPLEX"
+  }
+}
